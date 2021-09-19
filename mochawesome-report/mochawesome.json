@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-09-18T12:32:34.725Z",
+    "end": "2021-09-18T12:33:14.719Z",
+    "duration": 39994,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4ff8c6a3-c139-4c58-bc10-513463b94da6",
+      "title": "",
+      "fullFile": "cypress/integration/examples/APITest.js",
+      "file": "cypress/integration/examples/APITest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "259d75f9-4333-4100-90e3-d7465ce0b709",
+          "title": "CRUD happy path test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test GET Request(Read)",
+              "fullTitle": "CRUD happy path test Test GET Request(Read)",
+              "timedOut": null,
+              "duration": 9425,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://reqres.in/api/users?page=2').then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body.data[2]).to.have.property('last_name', 'Funke');\n});",
+              "err": {},
+              "uuid": "4abfe34e-fe35-4038-adf2-170806d8ea12",
+              "parentUUID": "259d75f9-4333-4100-90e3-d7465ce0b709",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test POST Request(Create)",
+              "fullTitle": "CRUD happy path test Test POST Request(Create)",
+              "timedOut": null,
+              "duration": 8088,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"POST\",\n  url: \"https://reqres.in/api/users\",\n  body: {\n    \"name\": \"morpheus\",\n    \"job\": \"leader\"\n  }\n}).then(response => {\n  expect(response.body).has.property(\"name\", \"morpheus\");\n  expect(response.body).has.property(\"job\", \"leader\");\n});",
+              "err": {},
+              "uuid": "3ebd72d1-707b-40e6-9845-6e2b3e9d32fc",
+              "parentUUID": "259d75f9-4333-4100-90e3-d7465ce0b709",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test PUT Request(Update)",
+              "fullTitle": "CRUD happy path test Test PUT Request(Update)",
+              "timedOut": null,
+              "duration": 10842,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"Failed screenshot\",\n  \"value\": \"screenshots\\\\examples\\\\APITest.js\\\\CRUD happy path test -- Test PUT Request(Update) (failed).png\"\n}",
+              "code": "cy.request({\n  method: \"PUT\",\n  url: \"https://reqres.in/api/users\",\n  body: {\n    \"name\": \"morpheus\",\n    \"job\": \"zion\"\n  }\n}).then(response => {\n  expect(response.body).has.property(\"name\", \"morpheus\");\n  expect(response.body).has.property(\"job\", \"zion resident\"); //Aserting negative scenario\n});",
+              "err": {
+                "message": "AssertionError: expected { Object (name, job, ...) } to have property 'job' of 'zion resident', but got 'zion'",
+                "estack": "AssertionError: expected { Object (name, job, ...) } to have property 'job' of 'zion resident', but got 'zion'\n    at Context.eval (https://reqres.in/__cypress/tests?p=cypress\\integration\\examples\\APITest.js:132:33)",
+                "diff": "- 'zion'\n+ 'zion resident'\n"
+              },
+              "uuid": "6851b4b0-4046-4cce-a807-be8b167d71b2",
+              "parentUUID": "259d75f9-4333-4100-90e3-d7465ce0b709",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test DELETE Request(Delete)",
+              "fullTitle": "CRUD happy path test Test DELETE Request(Delete)",
+              "timedOut": null,
+              "duration": 7953,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"DELETE\",\n  url: \"https://reqres.in/api/users/2\"\n}).then(response => {\n  expect(response.body).to.be.empty;\n  expect(response.status).to.equal(204);\n});",
+              "err": {},
+              "uuid": "5abd55e9-e567-4b04-ac2b-ea857a7e84ba",
+              "parentUUID": "259d75f9-4333-4100-90e3-d7465ce0b709",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4abfe34e-fe35-4038-adf2-170806d8ea12",
+            "3ebd72d1-707b-40e6-9845-6e2b3e9d32fc",
+            "5abd55e9-e567-4b04-ac2b-ea857a7e84ba"
+          ],
+          "failures": [
+            "6851b4b0-4046-4cce-a807-be8b167d71b2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 36308,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}

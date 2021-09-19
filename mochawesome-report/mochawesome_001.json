@@ -1,0 +1,108 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-09-19T09:22:15.112Z",
+    "end": "2021-09-19T09:22:19.609Z",
+    "duration": 4497,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "31c5c62a-ac19-4d76-955b-ea07ea38bde2",
+      "title": "",
+      "fullFile": "cypress/integration/examples/AccountCreationTest.js",
+      "file": "cypress/integration/examples/AccountCreationTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e162d8ac-2314-4c33-9106-4d593650379d",
+          "title": "Create an account and sign in",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create new address",
+              "fullTitle": "Create an account and sign in Create new address",
+              "timedOut": null,
+              "duration": 1506,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"Failed screenshot\",\n  \"value\": \"screenshots\\\\examples\\\\AccountCreationTest.js\\\\Create an account and sign in -- Create new address (failed).png\"\n}",
+              "code": "//Sign in\n_Header.default.getSignInLink().click();\n_SignInPage.default.getEmailTextField().type(this.data.email);\n_SignInPage.default.getPasswordTextField().type(this.data.password);\n_SignInPage.default.getSubmitBtn().click(); //Navigate to address page\n\n_Header.default.getAddressLink().click();\n_AddressPage.default.getNewAddressLink().click(); //***********2. Create new address and verify new address is displayed correctly on list******************\n\n_NewAddressPage.default.getFirstNameTextField().type(this.data.firstname);\n_NewAddressPage.default.getLastNameTextField().type(this.data.lastname);\n_NewAddressPage.default.getAddress1TextField().type(this.data.address1);\n_NewAddressPage.default.getCityTextField().type(this.data.city);\n_NewAddressPage.default.getStateDropdown().select(this.data.state);\n_NewAddressPage.default.getZipCodeTextField().type(this.data.zipcode);\n_NewAddressPage.default.getColourPicker().invoke('attr', 'value', this.data.colour);\nconst filepath = 'images/adressbook.jpg';\n_NewAddressPage.default.getPictureFileUploadBtn().attachFile(filepath);\n_NewAddressPage.default.getCreateAddressBtn().click(); //On show page verify new address added is correct\n\nshowAddressPage.getFirstName().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.firstname);\nshowAddressPage.getLastName().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.lastname);\nshowAddressPage.getAddress1().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.address1);\nshowAddressPage.getCity().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.city);\nshowAddressPage.getState().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.statecode);\nshowAddressPage.getColour().should('have.css', 'background-color').and('be.colored', this.data.colour); //Also verify on list that recently added address is displayed correcly\nshowAddressPage.getListLink().click(); //Can u use conatin istead of individual td comaprison?\n_AddressPage.default.getAddressTable().find('tr:last').find('td').first().should('have.text', this.data.firstname);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(2)').should('have.text', this.data.lastname);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(3)').first().should('have.text', this.data.city);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(4)').first().should('have.text', this.data.statecode); //****************3.click edit address link on list for the recenly added address and check previous entered address details are shown***********************\n\n_AddressPage.default.getAddressTable().find('tr:last').find('td').contains('Edit').click();\neditAddressPage.getFirstNameTextField().should('have.value', this.data.firstname);\neditAddressPage.getLastNameTextField().should('have.value', this.data.lastname);\neditAddressPage.getAddress1TextField().should('have.value', this.data.address1);\neditAddressPage.getCityTextField().should('have.value', this.data.city); // editAddressPage.getStateDropdown().should('have.value', this.data.statecode) //This assertion is failing. IS there a soft assertion to continue\neditAddressPage.getColourPicker().should('have.value', this.data.colour); //*********4. Update some details and verify correct updated details are shown on list*********************************\neditAddressPage.getCityTextField().clear().type(this.data.newcity);\neditAddressPage.getStateDropdown().select(this.data.newstate);\neditAddressPage.getUpdateAddressBtn().click();\nshowAddressPage.getCity().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.newcity);\nshowAddressPage.getState().invoke(\"text\").then(text => text.trim()).should(\"equal\", this.data.newstatecode);\neditAddressPage.getListLink().click();\n_AddressPage.default.getAddressTable().find('tr:last').find('td').first().should('have.text', this.data.firstname);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(2)').should('have.text', this.data.lastname);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(3)').first().should('have.text', this.data.newcity);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(4)').first().should('have.text', this.data.newstatecode); //***********5 Create new address without firstname and zipcode, verify correct error message is displayed*************************\n\n_AddressPage.default.getNewAddressLink().click();\n_NewAddressPage.default.getLastNameTextField().type(this.data.lastnameperson2);\n_NewAddressPage.default.getAddress1TextField().type(this.data.address1person2);\n_NewAddressPage.default.getCityTextField().type(this.data.cityperson2);\n_NewAddressPage.default.getStateDropdown().select(this.data.stateperson2);\n_NewAddressPage.default.getColourPicker().invoke('attr', 'value', this.data.colourperson2);\n_NewAddressPage.default.getCreateAddressBtn().click(); //Validate error message displayed\n\n_NewAddressPage.default.getErrorMsg().eq(0).should('contain', 'First name can\\'t be blank');\n_NewAddressPage.default.getErrorMsg().eq(1).should('contain', 'Zip code can\\'t be blank'); //************************6. correct the error and check list contains the correct number of addresses\n\n_NewAddressPage.default.getFirstNameTextField().type(this.data.firstnameperson2);\n_NewAddressPage.default.getZipCodeTextField().type(this.data.zipcodeperson2);\n_NewAddressPage.default.getStateDropdown().select(this.data.stateperson2); // Bug, have reselect the dropdown as previously selected option is not saved when there is a validtaion error\n\n_NewAddressPage.default.getCreateAddressBtn().click();\nshowAddressPage.getListLink().click(); //Validate correct addrees is displayed on the list\n_AddressPage.default.getAddressTable().find('tr:last').find('td').first().should('have.text', this.data.firstnameperson2);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(2)').should('have.text', this.data.lastnameperson2);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(3)').first().should('have.text', this.data.cityperson2);\n_AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(4)').first().should('have.text', this.data.statecodeperson2); //Negative scenaroio capture screenshot and attach in report\n\n_AddressPage.default.getAddressTable().find('tr').should($tr => {\n  expect($tr).to.have.length(3);\n}); //*****************7. delete all the address and verify list is empty******************************************\n\n_AddressPage.default.getAddressTable().then($body => {\n  if ($body.find('tr').length) {\n    _AddressPage.default.getAddressTable().find('tr').each(($el, index, $list) => {\n      _AddressPage.default.getDeleteAddressLink().eq(0).click();\n    });\n  }\n}); //Assert list is empty\n\n_AddressPage.default.getAddressTable().find('tr').should('have.length', 0);",
+              "err": {
+                "message": "TypeError: _Header.default.getSignInLink is not a function",
+                "estack": "TypeError: _Header.default.getSignInLink is not a function\n    at Context.eval (http://a.testaddressbook.com/__cypress/tests?p=cypress\\integration\\examples\\AccountCreationTest.js:187:21)",
+                "diff": null
+              },
+              "uuid": "732222eb-2419-4380-aa2a-bc515b0663c3",
+              "parentUUID": "e162d8ac-2314-4c33-9106-4d593650379d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "732222eb-2419-4380-aa2a-bc515b0663c3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1506,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

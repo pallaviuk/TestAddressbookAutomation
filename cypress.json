@@ -1,0 +1,12 @@
+{
+    "redirectionLimit":40,
+    "projectId": "4omx7z",
+    "reporter": "cypress-mochawesome-reporter",
+    "reporterOptions":{
+        "overwrite": false,
+        "html":false,
+        "json":true
+    }
+
+
+}

@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-09-19T09:24:20.761Z",
+    "end": "2021-09-19T09:24:25.788Z",
+    "duration": 5027,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cb0ad467-f273-4e09-a075-549922eacc68",
+      "title": "",
+      "fullFile": "cypress/integration/examples/deleteAllAddress.spec.js",
+      "file": "cypress/integration/examples/deleteAllAddress.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e6a59c07-39e1-4aee-b432-c6abb0f7f73d",
+          "title": "Create new address test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Delete all",
+              "fullTitle": "Create new address test Delete all",
+              "timedOut": null,
+              "duration": 2589,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//*****************7. delete all the address and verify list is empty******************************************\n_Header.default.clickAddressLink();\n_AddressPage.default.getAddressTable().then($body => {\n  if ($body.find('tr').length) {\n    _AddressPage.default.getAddressTable().find('tr').each(($el, index, $list) => {\n      _AddressPage.default.getDeleteAddressLink().eq(0).click();\n    });\n  }\n}); //Assert list is empty\n\n_AddressPage.default.getAddressTable().find('tr').should('have.length', 0);",
+              "err": {},
+              "uuid": "c9ac3297-f49c-41a6-9cc3-a6ca88257dbc",
+              "parentUUID": "e6a59c07-39e1-4aee-b432-c6abb0f7f73d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c9ac3297-f49c-41a6-9cc3-a6ca88257dbc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2589,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

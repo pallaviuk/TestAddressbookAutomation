@@ -1,0 +1,131 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2021-09-19T09:23:56.222Z",
+    "end": "2021-09-19T09:24:10.109Z",
+    "duration": 13887,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4c6cc0ef-16c7-4093-bd75-8eb560f583b9",
+      "title": "",
+      "fullFile": "cypress/integration/examples/createNewAddress.spec.js",
+      "file": "cypress/integration/examples/createNewAddress.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e391cc87-ddee-44e0-ae73-6ba6c0d748b6",
+          "title": "Create new address test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add new address to address boook",
+              "fullTitle": "Create new address test Add new address to address boook",
+              "timedOut": null,
+              "duration": 6904,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"Failed screenshot\",\n  \"value\": \"screenshots\\\\examples\\\\createNewAddress.spec.js\\\\Create new address test -- Add new address to address boook (failed).png\"\n}",
+              "code": "//Navigate to address page\n_Header.default.clickAddressLink();\n_AddressPage.default.getAddressTable().should('be.visible');\n_AddressPage.default.clickNewAddressLink();\ncy.fixture('addressRecord1').then(function (data) {\n  //***********2. Create new address and verify new address is displayed correctly on list******************\n  _NewAddressPage.default.getFirstNameTextField().type(data.firstname);\n  _NewAddressPage.default.getLastNameTextField().type(data.lastname);\n  _NewAddressPage.default.getAddress1TextField().type(data.address1);\n  _NewAddressPage.default.getCityTextField().type(data.city);\n  _NewAddressPage.default.getStateDropdown().select(data.state);\n  _NewAddressPage.default.getZipCodeTextField().type(data.zipcode);\n  _NewAddressPage.default.getColourPicker().invoke('attr', 'value', data.colour);\n});\nconst filepath = 'images/adressbook.jpg';\n_NewAddressPage.default.getPictureFileUploadBtn().attachFile(filepath);\n_NewAddressPage.default.getCreateAddressBtn().click();\nshowAddressPage.getListLink().click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<tbody>' to be 'visible'\n\nThis element `<tbody>` is not visible because it has an effective width and height of: `930 x 0` pixels.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<tbody>' to be 'visible'\n\nThis element `<tbody>` is not visible because it has an effective width and height of: `930 x 0` pixels.\n    at Context.eval (http://a.testaddressbook.com/__cypress/tests?p=cypress\\integration\\examples\\createNewAddress.spec.js:172:44)",
+                "diff": null
+              },
+              "uuid": "6688afe3-019b-43b7-881f-49b6aac6594f",
+              "parentUUID": "e391cc87-ddee-44e0-ae73-6ba6c0d748b6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Newly added address should be displayed in list",
+              "fullTitle": "Create new address test Newly added address should be displayed in list",
+              "timedOut": null,
+              "duration": 4429,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"Failed screenshot\",\n  \"value\": \"screenshots\\\\examples\\\\createNewAddress.spec.js\\\\Create new address test -- Newly added address should be displayed in list (failed).png\"\n}",
+              "code": "cy.fixture('addressRecord1').then(function (data) {\n  //Can u use conatin istead of individual td comaprison?\n  _AddressPage.default.getAddressTable().find('tr:last').find('td').first().should('have.text', data.firstname);\n  _AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(2)').should('have.text', data.lastname);\n  _AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(3)').first().should('have.text', data.city);\n  _AddressPage.default.getAddressTable().find('tr:last').find('td:nth-child(4)').first().should('have.text', data.statecode);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `tr:last`, but never found it. Queried from element: <tbody>",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `tr:last`, but never found it. Queried from element: <tbody>\n    at Context.eval (http://a.testaddressbook.com/__cypress/tests?p=cypress\\integration\\examples\\createNewAddress.spec.js:203:46)",
+                "diff": null
+              },
+              "uuid": "39ae26eb-c7c2-404a-adea-32852906a688",
+              "parentUUID": "e391cc87-ddee-44e0-ae73-6ba6c0d748b6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "6688afe3-019b-43b7-881f-49b6aac6594f",
+            "39ae26eb-c7c2-404a-adea-32852906a688"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11333,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
